@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla Charge – connexion</title>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#07090C;color:#E9EDF1;font-family:system-ui,sans-serif;text-align:center}
+  a{display:inline-block;margin-top:20px;padding:16px 28px;border-radius:14px;background:#3CF2A0;color:#04140C;font-weight:700;text-decoration:none}
+  p{color:#9AA4AE}
+</style>
+</head>
+<body>
+<div>
+  <h1>Connexion réussie</h1>
+  <p>Retour à l'application…</p>
+  <a id="open" href="#">Ouvrir Tesla Charge</a>
+</div>
+<script>
+  // Renvoie le code de connexion à l'app Android (teslacharge://auth?code=...)
+  var q = location.search.replace(/^\?/, '');
+  var intentUrl = 'intent://auth?' + q + '#Intent;scheme=teslacharge;package=fr.teslacharge;end';
+  document.getElementById('open').href = intentUrl;
+  setTimeout(function () { location.href = intentUrl; }, 300);
+</script>
+</body>
+</html>
